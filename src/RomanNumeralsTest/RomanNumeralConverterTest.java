@@ -54,6 +54,15 @@ public class RomanNumeralConverterTest {
         testData.add(new DecimalToRoman(38, "XXXVIII"));
         testData.add(new DecimalToRoman(39, "XXXIX"));
         testData.add(new DecimalToRoman(40, "XL"));
+        testData.add(new DecimalToRoman(41, "XLI"));
+        testData.add(new DecimalToRoman(42, "XLII"));
+        testData.add(new DecimalToRoman(50, "L"));
+        testData.add(new DecimalToRoman(90, "XC"));
+        testData.add(new DecimalToRoman(100, "C"));
+        testData.add(new DecimalToRoman(400, "CD"));
+        testData.add(new DecimalToRoman(500, "D"));
+        testData.add(new DecimalToRoman(900, "CM"));
+        testData.add(new DecimalToRoman(1000, "M"));
 
         return testData;
     }

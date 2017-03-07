@@ -1,59 +1,32 @@
 package RomanNumerals;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import java.util.ArrayList;
 
 public class RomanNumeralConverter {
+    private ArrayList<DecimalRomanPair> conversionMap;
+
+    public RomanNumeralConverter() {
+        this.conversionMap = new ArrayList<DecimalRomanPair>();
+        this.conversionMap.add(new DecimalRomanPair(1000, "M"));
+        this.conversionMap.add(new DecimalRomanPair(900, "CM"));
+        this.conversionMap.add(new DecimalRomanPair(500, "D"));
+        this.conversionMap.add(new DecimalRomanPair(400, "CD"));
+        this.conversionMap.add(new DecimalRomanPair(100, "C"));
+        this.conversionMap.add(new DecimalRomanPair(90, "XC"));
+        this.conversionMap.add(new DecimalRomanPair(50, "L"));
+        this.conversionMap.add(new DecimalRomanPair(40, "XL"));
+        this.conversionMap.add(new DecimalRomanPair(10, "X"));
+        this.conversionMap.add(new DecimalRomanPair(9, "IX"));
+        this.conversionMap.add(new DecimalRomanPair(5, "V"));
+        this.conversionMap.add(new DecimalRomanPair(4, "IV"));
+        this.conversionMap.add(new DecimalRomanPair(1, "I"));
+    }
+
     public String toRoman(int decimal) {
-        if (decimal >= 1000) {
-            return "M" + toRoman(decimal - 1000);
-        }
-
-        if (decimal >= 900) {
-            return "CM" + toRoman(decimal - 900);
-        }
-
-        if (decimal >= 500) {
-            return "D" + toRoman(decimal - 500);
-        }
-
-        if (decimal >= 400) {
-            return "CD" + toRoman(decimal - 400);
-        }
-
-        if (decimal >= 100) {
-            return "C" + toRoman(decimal - 100);
-        }
-
-        if (decimal >= 90) {
-            return "XC" + toRoman(decimal - 90);
-        }
-
-        if (decimal >= 50) {
-            return "L" + toRoman(decimal - 50);
-        }
-
-        if (decimal >= 40) {
-            return "XL" + toRoman(decimal - 40);
-        }
-
-        if (decimal >= 10) {
-            return "X" + toRoman(decimal - 10);
-        }
-
-        if (decimal >= 9) {
-            return "IX" + toRoman(decimal - 9);
-        }
-
-        if (decimal >= 5) {
-            return "V" + toRoman(decimal - 5);
-        }
-
-        if (decimal >= 4) {
-            return "IV" + toRoman(decimal - 4);
-        }
-
-        if (decimal >= 1) {
-            return "I" + toRoman(decimal - 1);
+        for (DecimalRomanPair pair : this.conversionMap) {
+            if (decimal >= pair.getDecimal()) {
+                return pair.getRoman() + toRoman(decimal - pair.getDecimal());
+            }
         }
 
         return "";
